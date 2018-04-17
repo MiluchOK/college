@@ -29,7 +29,7 @@ def ask_for_resource(resource_name):
 
 # Check if input is valid
 def is_resource_valid(text, min_size, max_size):
-    text_size = len(text)
+    text_size = len(text.strip())
 
     if min_size < text_size < max_size:
         return True
@@ -49,7 +49,7 @@ def safe_ask(resource_name, min_size, max_size):
 # Define minimum number of chars to be allowed for a resource
 MIN_RESOURCE_INPUT_SIZE = 0
 # Define maximum number of chars to be allowed for a resource
-MAX_RESOURCE_INPUT_SIZE = 10
+MAX_RESOURCE_INPUT_SIZE = 50
 # Define message that is going to be asked every time before new letter is about to be composed
 new_template_message = "\nWould you like to template a new message?(yY/nN) "
 # Define base message that is going to be build after data injection
