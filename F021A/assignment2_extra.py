@@ -18,7 +18,7 @@ def get_resource(resource_name, min_size, max_size):
     if is_resource_valid(resource, min_size, max_size):
         return resource
     else:
-        raise ValueError("Length of input should be between {} and {}".format(min_size, max_size))
+        raise ValueError("Length of input should be between {} and {}.".format(min_size, max_size))
 
 
 # Ask user for a resource
@@ -31,9 +31,19 @@ def ask_for_resource(resource_name):
 def is_resource_valid(text, min_size, max_size):
     text_size = len(text)
 
-    if text_size > min_size or text_size < max_size:
+    if min_size < text_size < max_size:
         return True
     return False
+
+
+# Ask for a resource with the MIX MAX input restrictions and recursively retry on input error
+def safe_ask(resource_name, min_size, max_size):
+    try:
+        resource = get_resource(resource_name, min_size, max_size)
+        return resource
+    except ValueError as e:
+        print(e, " Try again.")
+        safe_ask(resource_name, min_size, max_size)
 
 
 # Define minimum number of chars to be allowed for a resource
@@ -41,7 +51,7 @@ MIN_RESOURCE_INPUT_SIZE = 0
 # Define maximum number of chars to be allowed for a resource
 MAX_RESOURCE_INPUT_SIZE = 10
 # Define message that is going to be asked every time before new letter is about to be composed
-new_template_message = "Would you like to template a new message?(yY/nN) "
+new_template_message = "\nWould you like to template a new message?(yY/nN) "
 # Define base message that is going to be build after data injection
 base_message = "\nDear {0},\nI would like you to vote for {1}\n" + \
                "because I think {1} is best for\nthis country.\n" + \
@@ -61,11 +71,11 @@ while True:
         break
 
     # Ask for addressee
-    addressee = get_resource('addressee', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
+    addressee = safe_ask('addressee', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
     # Ask for candidate
-    candidate = get_resource('candidate', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
+    candidate = safe_ask('candidate', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
     # Ask for sender
-    sender = get_resource('sender', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
+    sender = safe_ask('sender', MIN_RESOURCE_INPUT_SIZE, MAX_RESOURCE_INPUT_SIZE)
     # push the resulting tuple to messages specifics list
     resources.append((addressee, candidate, sender))
 
