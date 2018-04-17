@@ -24,12 +24,17 @@ def get_resource(resource_name, min_size, max_size):
 # Ask user for a resource
 def ask_for_resource(resource_name):
     resource = input("Who is the {}? ".format(resource_name))
-    return resource
+    return sanitize(resource)
+
+
+# Sanitize the text
+def sanitize(text):
+    return text.strip()
 
 
 # Check if input is valid
 def is_resource_valid(text, min_size, max_size):
-    text_size = len(text.strip())
+    text_size = len(text)
 
     if min_size < text_size < max_size:
         return True
@@ -86,3 +91,44 @@ if not resources:
 # Loop over the data and display as a complete message
 for spec in resources:
     print(base_message.format(*spec))
+
+
+"""
+Would you like to template a new message?(yY/nN) y
+Who is the addressee? Dear Hildegard
+Who is the candidate? Hillary Clinton
+Who is the sender? Brunhilda
+
+Would you like to template a new message?(yY/nN) y
+Who is the addressee? Cheech
+Who is the candidate? Donald Trump
+Who is the sender? Chong
+
+Would you like to template a new message?(yY/nN) y
+Who is the addressee? Moe
+Who is the candidate? Bernie Sanders
+Who is the sender? Jack
+
+Would you like to template a new message?(yY/nN) n
+
+Dear Dear Hildegard,
+I would like you to vote for Hillary Clinton
+because I think Hillary Clinton is best for
+this country.
+Sincerely,
+Brunhilda
+
+Dear Cheech,
+I would like you to vote for Donald Trump
+because I think Donald Trump is best for
+this country.
+Sincerely,
+Chong
+
+Dear Moe,
+I would like you to vote for Bernie Sanders
+because I think Bernie Sanders is best for
+this country.
+Sincerely,
+Jack
+"""
