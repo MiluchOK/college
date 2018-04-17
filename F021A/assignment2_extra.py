@@ -44,11 +44,10 @@ def is_resource_valid(text, min_size, max_size):
 # Ask for a resource with the MIX MAX input restrictions and recursively retry on input error
 def safe_ask(resource_name, min_size, max_size):
     try:
-        resource = get_resource(resource_name, min_size, max_size)
-        return resource
+        return get_resource(resource_name, min_size, max_size)
     except ValueError as e:
         print(e, " Try again.")
-        safe_ask(resource_name, min_size, max_size)
+        return safe_ask(resource_name, min_size, max_size)
 
 
 # Define minimum number of chars to be allowed for a resource
@@ -95,7 +94,7 @@ for spec in resources:
 
 """
 Would you like to template a new message?(yY/nN) y
-Who is the addressee? Dear Hildegard
+Who is the addressee? Hildegard
 Who is the candidate? Hillary Clinton
 Who is the sender? Brunhilda
 
@@ -111,7 +110,7 @@ Who is the sender? Jack
 
 Would you like to template a new message?(yY/nN) n
 
-Dear Dear Hildegard,
+Dear Hildegard,
 I would like you to vote for Hillary Clinton
 because I think Hillary Clinton is best for
 this country.
