@@ -43,8 +43,8 @@ class Assignment3Test(unittest.TestCase):
                              'dessert': 'ice cream'}
         hash2 = {'fruit': 'lemons', 'meat': 'hamburger', 'drinks': ['apple juice', 'orange juice', 'vodka']}
         hash3 = {'fruit': ['oranges', 'bananas'], 'vegetables': ['lettuce', 'carrots'], 'drinks': 'milk'}
-        expected_hash = {'meat': ['hamburger', 'chicken'], 'fruit': ['lemons', 'apples', 'oranges', 'bananas'],
-                         'vegetables': ['lettuce', 'carrots', 'potatoes'], 'drinks':
+        expected_hash = {'meat': ['chicken', 'hamburger'], 'fruit': ['apples', 'lemons', 'oranges', 'bananas'],
+                         'vegetables': ['potatoes', 'lettuce', 'carrots'], 'drinks':
                              ['beer', 'wine', 'apple juice', 'orange juice', 'vodka', 'milk'], 'dessert': 'ice cream'}
         result = magic_hash_merge(magic_hash_merge(hash1, hash2), hash3)
         self.assertDictEqual(result, expected_hash)
