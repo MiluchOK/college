@@ -28,28 +28,51 @@ def merge_values(value1, value2):
     return value1 + value2
 
 
+def test_case_helper(hash1, hash2, hash3):
+    print("\n# original dictionaries \n{}\n{}\n{}".format(hash1, hash2, hash3))
+    compute_result = magic_hash_merge(magic_hash_merge(hash1, hash2), hash3)
+    print("# result of the merge, all the roommate's shopping lists together:\n{}".format(compute_result))
+
+
 # Test Case #1
 hash1 = {'fruit': 'apples', 'meat': 'chicken', 'vegetables': 'potatoes', 'drinks': ['beer', 'wine'],
-                             'dessert': 'ice cream'}
+         'dessert': 'ice cream'}
 hash2 = {'fruit': 'lemons', 'meat': 'hamburger', 'drinks': ['apple juice', 'orange juice', 'vodka']}
 hash3 = {'fruit': ['oranges', 'bananas'], 'vegetables': ['lettuce', 'carrots'], 'drinks': 'milk'}
-print(magic_hash_merge(magic_hash_merge(hash1, hash2), hash3))
-
+test_case_helper(hash1, hash2, hash3)
 
 # Test Case #2
 hash1 = {'k1': 'v1', 'k2': 'v2', 'k3': 'v5', 'k4': 'v10'}
 hash2 = {'k1': 'v3', 'k2': 'v4', 'k3': 'v6', 'k5': 'v11'}
 hash3 = {'k1': 'v7', 'k2': 'v8', 'k3': 'v9', 'k6': 'v12'}
-print(magic_hash_merge(magic_hash_merge(hash1, hash2), hash3))
+test_case_helper(hash1, hash2, hash3)
 
 # Test Case #3 ((non-array / array), (array / non-array), (array / array), (non-array / non-array) )
 hash1 = {'k1': 'v1', 'k2': ['v1', 'v2'], 'k3': ['v1', 'v2'], 'k4': 'v1'}
 hash2 = {'k1': ['v3', 'v4'], 'k2': 'v3', 'k3': ['v3', 'v4'], 'k4': 'v2'}
 hash3 = {'k2': 'v1', 'k1': ['v1', 'v2']}
-print(magic_hash_merge(magic_hash_merge(hash1, hash2), hash3))
+test_case_helper(hash1, hash2, hash3)
 
 """
+
+# original dictionaries 
+{'fruit': 'apples', 'meat': 'chicken', 'vegetables': 'potatoes', 'drinks': ['beer', 'wine'], 'dessert': 'ice cream'}
+{'fruit': 'lemons', 'meat': 'hamburger', 'drinks': ['apple juice', 'orange juice', 'vodka']}
+{'fruit': ['oranges', 'bananas'], 'vegetables': ['lettuce', 'carrots'], 'drinks': 'milk'}
+# result of the merge, all the roommate's shopping lists together:
 {'fruit': ['apples', 'lemons', 'oranges', 'bananas'], 'meat': ['chicken', 'hamburger'], 'vegetables': ['potatoes', 'lettuce', 'carrots'], 'drinks': ['beer', 'wine', 'apple juice', 'orange juice', 'vodka', 'milk'], 'dessert': 'ice cream'}
+
+# original dictionaries 
+{'k1': 'v1', 'k2': 'v2', 'k3': 'v5', 'k4': 'v10'}
+{'k1': 'v3', 'k2': 'v4', 'k3': 'v6', 'k5': 'v11'}
+{'k1': 'v7', 'k2': 'v8', 'k3': 'v9', 'k6': 'v12'}
+# result of the merge, all the roommate's shopping lists together:
 {'k1': ['v1', 'v3', 'v7'], 'k2': ['v2', 'v4', 'v8'], 'k3': ['v5', 'v6', 'v9'], 'k4': 'v10', 'k5': 'v11', 'k6': 'v12'}
+
+# original dictionaries 
+{'k1': 'v1', 'k2': ['v1', 'v2'], 'k3': ['v1', 'v2'], 'k4': 'v1'}
+{'k1': ['v3', 'v4'], 'k2': 'v3', 'k3': ['v3', 'v4'], 'k4': 'v2'}
+{'k2': 'v1', 'k1': ['v1', 'v2']}
+# result of the merge, all the roommate's shopping lists together:
 {'k1': ['v1', 'v3', 'v4', 'v1', 'v2'], 'k2': ['v1', 'v2', 'v3', 'v1'], 'k3': ['v1', 'v2', 'v3', 'v4'], 'k4': ['v1', 'v2']}
 """
