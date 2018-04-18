@@ -31,7 +31,7 @@ def merge_values(value1, value2):
 def test_case_helper(hash1, hash2, hash3):
     print("\n# original dictionaries \n{}\n{}\n{}".format(hash1, hash2, hash3))
     compute_result = magic_hash_merge(magic_hash_merge(hash1, hash2), hash3)
-    print("# result of the merge, all the roommate's shopping lists together:\n{}".format(compute_result))
+    print("\n# result of the merge, all the roommate's shopping lists together:\n{}".format(compute_result))
 
 
 # Test Case #1
