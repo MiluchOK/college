@@ -59,6 +59,7 @@ test_case_helper(hash1, hash2, hash3)
 {'fruit': 'apples', 'meat': 'chicken', 'vegetables': 'potatoes', 'drinks': ['beer', 'wine'], 'dessert': 'ice cream'}
 {'fruit': 'lemons', 'meat': 'hamburger', 'drinks': ['apple juice', 'orange juice', 'vodka']}
 {'fruit': ['oranges', 'bananas'], 'vegetables': ['lettuce', 'carrots'], 'drinks': 'milk'}
+
 # result of the merge, all the roommate's shopping lists together:
 {'fruit': ['apples', 'lemons', 'oranges', 'bananas'], 'meat': ['chicken', 'hamburger'], 'vegetables': ['potatoes', 'lettuce', 'carrots'], 'drinks': ['beer', 'wine', 'apple juice', 'orange juice', 'vodka', 'milk'], 'dessert': 'ice cream'}
 
@@ -66,6 +67,7 @@ test_case_helper(hash1, hash2, hash3)
 {'k1': 'v1', 'k2': 'v2', 'k3': 'v5', 'k4': 'v10'}
 {'k1': 'v3', 'k2': 'v4', 'k3': 'v6', 'k5': 'v11'}
 {'k1': 'v7', 'k2': 'v8', 'k3': 'v9', 'k6': 'v12'}
+
 # result of the merge, all the roommate's shopping lists together:
 {'k1': ['v1', 'v3', 'v7'], 'k2': ['v2', 'v4', 'v8'], 'k3': ['v5', 'v6', 'v9'], 'k4': 'v10', 'k5': 'v11', 'k6': 'v12'}
 
@@ -73,6 +75,7 @@ test_case_helper(hash1, hash2, hash3)
 {'k1': 'v1', 'k2': ['v1', 'v2'], 'k3': ['v1', 'v2'], 'k4': 'v1'}
 {'k1': ['v3', 'v4'], 'k2': 'v3', 'k3': ['v3', 'v4'], 'k4': 'v2'}
 {'k2': 'v1', 'k1': ['v1', 'v2']}
+
 # result of the merge, all the roommate's shopping lists together:
 {'k1': ['v1', 'v3', 'v4', 'v1', 'v2'], 'k2': ['v1', 'v2', 'v3', 'v1'], 'k3': ['v1', 'v2', 'v3', 'v4'], 'k4': ['v1', 'v2']}
 """
