@@ -7,6 +7,8 @@ be exactly as it was in the input dictionary.
 """
 
 
+# The function takes in 2 hashes
+# The function is merging the hashes and following the program specifications on the merging logic
 def magic_hash_merge(hash1, hash2):
     result = hash1.copy()
     for key, value in hash2.items():
@@ -18,6 +20,8 @@ def magic_hash_merge(hash1, hash2):
     return result
 
 
+# The function is taking in 2 values of any type
+# The function is responsible for merging the values in a way that a single array is produced as return value
 def merge_values(value1, value2):
     if not isinstance(value1, list):
         value1 = [value1]
@@ -28,6 +32,9 @@ def merge_values(value1, value2):
     return value1 + value2
 
 
+# The function is taking 3 hashes
+# The function is just a support mechanism for the assignment, because all the test cases happen to
+# use 3 hashes
 def test_case_helper(hash1, hash2, hash3):
     print("\n# original dictionaries \n{}\n{}\n{}".format(hash1, hash2, hash3))
     compute_result = magic_hash_merge(magic_hash_merge(hash1, hash2), hash3)
