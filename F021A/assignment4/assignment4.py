@@ -2,43 +2,40 @@
 The program takes a whole number as parameter and returns a string containing the number n2wed out in English
 """
 
-# Hash for number - word mapping
-num2words = {1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
-             6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten',
-             11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen',
-             15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen',
-             20: 'twenty', 30: 'thirty', 40: 'forty', 50: 'fifty', 60: 'sixty', 70: 'seventy',
-             80: 'eighty', 90: 'ninety'
-             }
-
-# Array for tens
-# num2words2 = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+# Map for number - word mapping
+num_word_map = {
+    1: 'one', 2: 'two', 3: 'three', 4: 'four', 5: 'five',
+    6: 'six', 7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten',
+    11: 'eleven', 12: 'twelve', 13: 'thirteen', 14: 'fourteen',
+    15: 'fifteen', 16: 'sixteen', 17: 'seventeen', 18: 'eighteen', 19: 'nineteen',
+    20: 'twenty', 30: 'thirty', 40: 'forty', 50: 'fifty', 60: 'sixty', 70: 'seventy',
+    80: 'eighty', 90: 'ninety', 100: 'hundred', 1000: 'thousand', 1000000: 'million'
+}
 
 
-# The core n2wing algorithm
+# The core number to word algorithm
 def n2w(num):
     if num < 0:
         return "minus " + n2w(num * -1)
     elif num == 0:
         return ""
     elif num < 20:
-        return num2words[num]
+        return num_word_map[num]
     elif num < 100:
-        # Kind of a special kind
+        # A special kind
         quotient, remainder = divmod(num, 10)
-        return num2words[quotient*10] + " " + n2w(remainder)
+        return num_word_map[quotient * 10] + " " + n2w(remainder)
     elif num < 1000:
-        ray = divmod(num, 100)
-        mid = " hundred "
-        return num2words[ray[0]] + mid + n2w(ray[1])
+        return broker(num, 100)
     elif num < 1000000:
-        return broker(num, 1000, "thousand")
+        return broker(num, 1000)
     elif num < 1000000000:
-        return broker(num, 1000000, "million")
+        return broker(num, 1000000)
 
 
 # The broker logic
-def broker(num, grouper, gluer):
+def broker(num, grouper):
+    gluer = num_word_map[grouper]
     quotient, remainder = divmod(num, grouper)
     return n2w(quotient) + (" {} ".format(gluer)) + n2w(remainder)
 
