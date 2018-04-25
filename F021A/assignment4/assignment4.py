@@ -63,3 +63,27 @@ def spell(num):
         # relatively well compare to introducing additional logic for preventing double spaces
         return numbers_to_words(num).replace("  ", " ").strip()
 
+
+######## TESTs function spell()  ###########
+print(spell(123456789))
+print(spell(456678))
+print(spell(66))
+print(spell(-123456789))
+print(spell(-456678))
+print(spell(-418))
+print(spell(-13456678))
+print(spell(0))
+print(spell(10004))
+
+####### OUTPUT #######
+"""
+one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine
+four hundred fifty six thousand six hundred seventy eight
+sixty six
+negative one hundred twenty three million four hundred fifty six thousand seven hundred eighty nine
+negative four hundred fifty six thousand six hundred seventy eight
+negative four hundred eighteen
+negative thirteen million four hundred fifty six thousand six hundred seventy eight
+zero
+ten thousand four
+"""
