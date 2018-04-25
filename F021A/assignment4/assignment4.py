@@ -16,7 +16,7 @@ num_word_map = {
 # The core number to word algorithm
 def n2w(num):
     if num < 0:
-        return "minus " + n2w(num * -1)
+        return "negative " + n2w(num * -1)
     elif num == 0:
         return ""
     elif num < 20:
@@ -33,23 +33,27 @@ def n2w(num):
         return broker(num, 1000000)
 
 
-# The broker logic
+# The broker logic necessary to know how to group the numbers
 def broker(num, grouper):
     gluer = num_word_map[grouper]
     quotient, remainder = divmod(num, grouper)
     return n2w(quotient) + (" {} ".format(gluer)) + n2w(remainder)
 
 
+# IMPORTANT this function is the program entry point, the rest of functions are meant to be private
 # The program gateway for input validation and optimizations
 def spell(num):
-    max_input = 1000000000000
+    max_input = 1000000000
     min_input = max_input * -1
 
     if num == 0:
         return "zero"
-    elif num > max_input:
+    elif num >= max_input:
         raise ValueError("Invalid input. The value should be no more than {}".format(max_input))
-    elif num < min_input:
+    elif num <= min_input:
         raise ValueError("Invalid input. The value should be no less than {}.".format(min_input))
     else:
-        return n2w(num)
+        # Not happy about another round of iteration for replacing, feels like patching wholes, but it works
+        # relatively well compare to introducing additional logic for preventing double spaces
+        return n2w(num).replace("  ", " ").strip()
+
