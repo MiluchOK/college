@@ -13,10 +13,12 @@ num_word_map = {
 }
 
 
-# The core number to word algorithm
-def n2w(num):
+# The core `number to word` algorithm
+# The function takes in a number
+# The function returns a human readable string representation of the number
+def numbers_to_words(num):
     if num < 0:
-        return "negative " + n2w(num * -1)
+        return "negative " + numbers_to_words(num * -1)
     elif num == 0:
         return ""
     elif num < 20:
@@ -24,7 +26,7 @@ def n2w(num):
     elif num < 100:
         # A special kind
         quotient, remainder = divmod(num, 10)
-        return num_word_map[quotient * 10] + " " + n2w(remainder)
+        return num_word_map[quotient * 10] + " " + numbers_to_words(remainder)
     elif num < 1000:
         return broker(num, 100)
     elif num < 1000000:
@@ -34,14 +36,18 @@ def n2w(num):
 
 
 # The broker logic necessary to know how to group the numbers
+# Takes in the original number and the divider
+# Returns string representation of the number
 def broker(num, grouper):
     gluer = num_word_map[grouper]
     quotient, remainder = divmod(num, grouper)
-    return n2w(quotient) + (" {} ".format(gluer)) + n2w(remainder)
+    return numbers_to_words(quotient) + (" {} ".format(gluer)) + numbers_to_words(remainder)
 
 
 # IMPORTANT this function is the program entry point, the rest of functions are meant to be private
 # The program gateway for input validation and optimizations
+# Takes in the original number
+# Returns human readable representation of the number
 def spell(num):
     max_input = 1000000000
     min_input = max_input * -1
@@ -55,5 +61,5 @@ def spell(num):
     else:
         # Not happy about another round of iteration for replacing, feels like patching wholes, but it works
         # relatively well compare to introducing additional logic for preventing double spaces
-        return n2w(num).replace("  ", " ").strip()
+        return numbers_to_words(num).replace("  ", " ").strip()
 
