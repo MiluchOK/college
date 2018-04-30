@@ -10,8 +10,8 @@ class Assignment5Test(unittest.TestCase):
         self.assertRaises(ValueError, Card, 10, "j")
 
     def test_can_be_initialized_with_all_possible_values(self):
-        possible_ranks = list(range(1, 14))
-        possible_suits = ["d" "c", "h", "s"]
+        possible_ranks = list(range(1, 13))
+        possible_suits = ["d", "c", "h", "s"]
         for rank in possible_ranks:
             for suit in possible_suits:
                 self.assertIsNotNone(Card(rank, suit))
