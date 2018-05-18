@@ -10,6 +10,20 @@ from assignment6 import Card
 class Assignment6Test(unittest.TestCase):
 
     """
+    Test that user cannot initialize a Card with wrong type supplied as rank
+    the code is expected to throw TypeError
+    """
+    def test_cannot_init_with_wrong_type_rank(self):
+        self.assertRaises(TypeError, Card, "11", "s")
+
+    """
+    Test that user cannot initialize a Card with wrong type supplied as suit
+    the code is expected to throw TypeError
+    """
+    def test_cannot_init_with_wrong_type_suit(self):
+        self.assertRaises(TypeError, Card, 11, 5)
+
+    """
     Test that user cannot initialize a Card with invalid rank
     the code is expected to throw ValueError
     """

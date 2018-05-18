@@ -56,6 +56,9 @@ class Card:
     # Validator for the rank attribute
     @staticmethod
     def _validate_rank(rank):
+        if not isinstance(rank, int):
+            raise TypeError("Rank must be an integer.")
+
         if rank not in Card.possible_ranks:
             raise ValueError("Rank must be one of these: {}. You provided: {}"
                              .format(list(Card.possible_ranks.keys()), rank))
@@ -65,6 +68,9 @@ class Card:
     #  "d" "c", "h", or "s"
     @staticmethod
     def _validate_suit(suit):
+        if not isinstance(suit, str):
+            raise TypeError("Suit must be a string.")
+
         if suit not in Card.possible_suits:
             raise ValueError("Suit must be on of these: {}. You provided: {}"
                              .format(list(Card.possible_suits.keys()), suit))
