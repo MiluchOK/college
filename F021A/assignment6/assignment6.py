@@ -93,10 +93,12 @@ if __name__ == '__main__':
 	# IMPORTANT All those test cases are properly tested in the unittests file that is attached to the submission
 	# I am adding the following code just for good measure
 
-	def get_random_suit(): return list(Card.possible_suits.keys())[0]
+	def get_random_suit():
+		return list(Card.possible_suits.keys())[0]
 
 
-	def get_random_rank(): return list(Card.possible_ranks.keys())[0]
+	def get_random_rank():
+		return list(Card.possible_ranks.keys())[0]
 
 
 	valid_card = Card(get_random_rank(), get_random_suit())
@@ -111,7 +113,7 @@ if __name__ == '__main__':
 
 		# Card with invalid rank
 		{
-			'rank': 10,
+			'rank': 30,
 			'suit': get_random_suit(),
 			'expected_error': ValueError
 		},
@@ -134,4 +136,28 @@ if __name__ == '__main__':
 	# Main printing code
 	print(valid_card.debug_representation())
 	for invalid_card in invalid_cards:
-		Card()
+		try:
+			card = Card(invalid_card['rank'], invalid_card['suit'])
+			raise AssertionError("An invalid card have successfully been initialized. {}"
+								 .format(card.debug_representation()))
+		except AssertionError as exc:
+			raise exc
+		except Exception as exc:
+			actual_exc = type(exc)
+			expected_exc = invalid_card['expected_error']
+			if actual_exc != expected_exc:
+				raise AssertionError("Wrong exception is raised. The exception raised is: {}. \n But expected {}"
+									 .format(actual_exc, expected_exc))
+			print("Initialization of {} prevented with error: {}".format(invalid_card, invalid_card['expected_error']))
+
+
+"""
+Ace of Heart
+Rank: 1
+Suit: h
+Blackjack value: 1
+Initialization of {'expected_error': <type 'exceptions.TypeError'>, 'rank': '1', 'suit': 'h'} prevented with error: <type 'exceptions.TypeError'>
+Initialization of {'expected_error': <type 'exceptions.ValueError'>, 'rank': 30, 'suit': 'h'} prevented with error: <type 'exceptions.ValueError'>
+Initialization of {'expected_error': <type 'exceptions.TypeError'>, 'rank': 1, 'suit': 1} prevented with error: <type 'exceptions.TypeError'>
+Initialization of {'expected_error': <type 'exceptions.ValueError'>, 'rank': 20, 'suit': 'h'} prevented with error: <type 'exceptions.ValueError'>
+"""
