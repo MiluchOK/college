@@ -5,7 +5,8 @@ Each test is commented with the test description clearly (hopefully) showing wha
 """
 
 import unittest
-from assignment7 import Employee
+from employee import Employee
+from manager import Manager
 
 
 class Assignment7Test(unittest.TestCase):
@@ -16,7 +17,25 @@ class Assignment7Test(unittest.TestCase):
 		self.target_ssn = 123123123
 		self.target_salary = 10000
 
+		# Init an employee
 		self.target = Employee(self.target_first_name, self.target_last_name, self.target_ssn, self.target_salary)
+
+		self.target_manager_first_name = 'Jane'
+		self.target_manager_last_name = 'Doe'
+		self.target_manager_ssn = 666666666
+		self.target_manager_salary = 99999
+		self.target_manager_title = 'Eng Manager'
+		self.target_manager_annual_bonus_amount = 6666
+
+		# Init a manager
+		self.target_manager = Manager(
+			self.target_manager_first_name,
+			self.target_manager_last_name,
+			self.target_manager_ssn,
+			self.target_manager_salary,
+			self.target_manager_title,
+			self.target_manager_annual_bonus_amount
+		)
 
 	"""
 	Test checks that Employee can be initialized
@@ -30,7 +49,7 @@ class Assignment7Test(unittest.TestCase):
 		assert self.target.salary == self.target_salary
 
 	"""
-	The test checks that user can get a raise
+	The test checks that user can give a raise to an employee
 	"""
 
 	def test_can_get_a_raise(self):
@@ -38,6 +57,28 @@ class Assignment7Test(unittest.TestCase):
 		expected_new_salary = self.target.salary + self.target.salary * percent_raise
 		self.target.give_raise(percent_raise)
 		assert self.target.salary == expected_new_salary
+
+	"""
+	The test checks that user can initialize a manager
+	"""
+	def test_can_initialize_a_manager(self):
+		assert isinstance(self.target_manager, Manager)
+		assert self.target_manager.first_name == self.target_manager_first_name
+		assert self.target_manager.last_name == self.target_manager_last_name
+		assert self.target_manager.title == self.target_manager_title
+		assert self.target_manager.annual_bonus_amount == self.target_manager_annual_bonus_amount
+		assert self.target_manager.ssn == self.target_manager_ssn
+		assert self.target_manager.salary == self.target_manager_salary
+
+	"""
+	The test checks that manager can get a raise
+	"""
+	def test_manager_can_get_a_raise(self):
+		percent_raise = 0.1
+		expected_new_salary = self.target_manager.salary + self.target_manager_salary * percent_raise
+		self.target_manager.give_raise(percent_raise)
+		assert self.target_manager.salary == expected_new_salary
+
 
 
 
