@@ -22,7 +22,7 @@ Generate random salary
 
 
 def get_random_salary():
-	return random.randint(1111, 9999999999)
+	return random.randint(1111, 999999)
 
 
 """
@@ -104,4 +104,5 @@ if __name__ == '__main__':
 			company.append(EmployeeFactory.generate_employee())
 
 	for person in company:
+		person.give_raise(0.1)
 		print("\n" + str(person))
