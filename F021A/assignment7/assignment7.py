@@ -106,3 +106,114 @@ if __name__ == '__main__':
 	for person in company:
 		person.give_raise(0.1)
 		print("\n" + str(person))
+
+# Output
+"""
+First Name: Dory 
+Last Name: Groo 
+SSN: 631050017
+Salary: 403986.0$
+Title: QA Manager
+Annual Bonus: 9812
+
+First Name: Marry 
+Last Name: Boo 
+SSN: 894535082
+Salary: 72152.3$
+
+First Name: Polly 
+Last Name: Groo 
+SSN: 730346967
+Salary: 739358.4$
+
+First Name: Dory 
+Last Name: Foo 
+SSN: 360923662
+Salary: 279989.6$
+
+First Name: Alex 
+Last Name: Mil 
+SSN: 643149435
+Salary: 650928.3$
+
+First Name: Jane 
+Last Name: Voloo 
+SSN: 483634834
+Salary: 476740.0$
+Title: Marketing Manager
+Annual Bonus: 3027
+
+First Name: Ana 
+Last Name: Sdop 
+SSN: 61004088
+Salary: 1027798.2$
+
+First Name: Ana 
+Last Name: Dinn 
+SSN: 505827655
+Salary: 292188.6$
+
+First Name: Alex 
+Last Name: Foo 
+SSN: 171483321
+Salary: 969960.2$
+
+First Name: Jane 
+Last Name: Mil 
+SSN: 10823836
+Salary: 717637.8$
+
+First Name: Alex 
+Last Name: Boo 
+SSN: 327757934
+Salary: 50019.2$
+Title: Sales Manager
+Annual Bonus: 3472
+
+First Name: Simbi 
+Last Name: Groo 
+SSN: 637414494
+Salary: 913657.8$
+
+First Name: Marry 
+Last Name: Dinn 
+SSN: 650964247
+Salary: 967435.7$
+
+First Name: Jane 
+Last Name: Sdop 
+SSN: 759156566
+Salary: 306656.9$
+
+First Name: Simbi 
+Last Name: Mil 
+SSN: 887158596
+Salary: 969612.6$
+
+First Name: Alex 
+Last Name: Mil 
+SSN: 186819018
+Salary: 473193.6$
+Title: QA Manager
+Annual Bonus: 2352
+
+First Name: Dory 
+Last Name: Sdop 
+SSN: 656845747
+Salary: 661479.5$
+
+First Name: Polly 
+Last Name: Foo 
+SSN: 413212999
+Salary: 1038296.6$
+
+First Name: Dory 
+Last Name: Sdop 
+SSN: 661217920
+Salary: 950824.6$
+
+First Name: Stenley 
+Last Name: Foo 
+SSN: 853570776
+Salary: 506973.5$
+"""
