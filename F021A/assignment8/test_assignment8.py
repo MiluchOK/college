@@ -9,7 +9,7 @@ from employee import Employee
 from manager import Manager
 
 
-class Assignment7Test(unittest.TestCase):
+class Assignment8Test(unittest.TestCase):
 
 	def setUp(self):
 		self.target_first_name = 'John'
@@ -95,14 +95,14 @@ class Assignment7Test(unittest.TestCase):
 
 	def test_employee_not_always_equal(self):
 		other_employee = Employee("Fooo", "Booo", 111111111, 2342353)
-		assert self.target == other_employee, False
+		self.assertFalse(self.target == other_employee)
 
 	"""
 	The test checks that managers can be equal
 	"""
 
 	def test_managers_can_be_equal(self):
-		other_manager = Employee(self.target_manager_first_name,
+		other_manager = Manager(self.target_manager_first_name,
 								 self.target_manager_last_name,
 								 self.target_manager_ssn,
 								 self.target_manager_salary,
@@ -116,7 +116,7 @@ class Assignment7Test(unittest.TestCase):
 
 	def test_managers_not_always_equal(self):
 		other_manager = Manager("Foo", "Boo", 111111111, 23234, "QA Manager", 325234)
-		assert self.target_manager == other_manager, False
+		self.assertFalse(self.target_manager == other_manager)
 
 
 if __name__ == '__main__':

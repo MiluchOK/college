@@ -16,6 +16,13 @@ class Employee():
 	def give_raise(self, percent_raise):
 		self.salary += self.salary * percent_raise
 
+	# Check if employees are equal
+	def __eq__(self, other):
+		if self.first_name == other.first_name and self.last_name == other.last_name:
+			return True
+		else:
+			return False
+
 	# Return the string representation of the employee
 	def __str__(self):
 		return "First Name: {} \nLast Name: {} \nSSN: {}\nSalary: {}$" \
