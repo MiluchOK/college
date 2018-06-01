@@ -18,7 +18,8 @@ class Employee():
 
 	# Check if employees are equal
 	def __eq__(self, other):
-		if self.first_name == other.first_name and self.last_name == other.last_name:
+		if self.first_name.lower() == other.first_name.lower() and \
+				self.last_name.lower() == other.last_name.lower():
 			return True
 		else:
 			return False

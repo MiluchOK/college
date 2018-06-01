@@ -90,6 +90,15 @@ class Assignment8Test(unittest.TestCase):
 		assert self.target == other_employee, True
 
 	"""
+	The test checks that employee comparision is case insensitive
+	"""
+
+	def test_employee_equal_regarding_casing(self):
+		other_employee = Employee(self.target_first_name.upper(), self.target_last_name.upper(), self.target_ssn,
+								  self.target_salary)
+		self.assertTrue(self.target == other_employee)
+
+	"""
 		The test checks that employees are not always equal
 	"""
 
@@ -103,11 +112,11 @@ class Assignment8Test(unittest.TestCase):
 
 	def test_managers_can_be_equal(self):
 		other_manager = Manager(self.target_manager_first_name,
-								 self.target_manager_last_name,
-								 self.target_manager_ssn,
-								 self.target_manager_salary,
-								 self.target_manager_title,
-								 self.target_manager_annual_bonus_amount)
+								self.target_manager_last_name,
+								self.target_manager_ssn,
+								self.target_manager_salary,
+								self.target_manager_title,
+								self.target_manager_annual_bonus_amount)
 		assert self.target_manager == other_manager, True
 
 	"""
@@ -117,6 +126,15 @@ class Assignment8Test(unittest.TestCase):
 	def test_managers_not_always_equal(self):
 		other_manager = Manager("Foo", "Boo", 111111111, 23234, "QA Manager", 325234)
 		self.assertFalse(self.target_manager == other_manager)
+
+	"""
+	The test checks that if first names are the same, but last names are not
+	the employees are not counted as equals
+	"""
+
+	def test_employee_not_equal_with_partialy_same_data(self):
+		other_eployee = Employee(self.target_first_name, "Boo", 111111111, 2342353)
+		self.assertFalse(self.target == other_eployee)
 
 
 if __name__ == '__main__':
