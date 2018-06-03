@@ -28,7 +28,7 @@ class Employee():
 	def __lt__(self, other):
 		self_name = self.last_name + self.first_name
 		other_name = other.last_name + other.first_name
-		if self_name < other_name:
+		if self_name.lower() < other_name.lower():
 			return True
 		else:
 			return False
