@@ -136,6 +136,36 @@ class Assignment8Test(unittest.TestCase):
 		other_eployee = Employee(self.target_first_name, "Boo", 111111111, 2342353)
 		self.assertFalse(self.target == other_eployee)
 
+	"""
+	The test checks that employees can be sorted
+	"""
+
+	def test_employees_can_be_sorted(self):
+		company = [
+			Manager('Zeesha', 'Crim', 45345, 436345, 'Director', 45345345),
+			Employee('Foo', 'Boo', 345345, 345345),
+			Manager('Yury', 'Ystinchuk', 355345, 43534643, 'QA Manager', 4353443),
+			Employee('Alexey', 'Milyukov', 45345345, 345345),
+		]
+		sorted_company = sorted(company)
+		assert sorted_company[0] == company[1]
+		assert sorted_company[1] == company[0]
+		assert sorted_company[2] == company[3]
+		assert sorted_company[3] == company[2]
+
+	"""
+	The test checks that employees with the same last name are being sorted by first name then
+	"""
+
+	def test_maployees_sorted_by_last_name_first(self):
+		company = [
+			Employee('Kriss', 'Foo', 345345, 345345),
+			Manager('Alex', 'Foo', 45345, 436345, 'Director', 45345345)
+		]
+		sorted_company = sorted(company)
+		assert sorted_company[0] == company[1]
+		assert sorted_company[1] == company[0]
+
 
 if __name__ == '__main__':
 	unittest.main()

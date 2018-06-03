@@ -24,6 +24,15 @@ class Employee():
 		else:
 			return False
 
+	# Compare employees
+	def __lt__(self, other):
+		self_name = self.last_name + self.first_name
+		other_name = other.last_name + other.first_name
+		if self_name < other_name:
+			return True
+		else:
+			return False
+
 	# Return the string representation of the employee
 	def __str__(self):
 		return "First Name: {} \nLast Name: {} \nSSN: {}\nSalary: {}$" \
