@@ -2,6 +2,7 @@
 The class is a representation of a a card
 """
 
+import random
 
 class Card:
 	possible_suits = {
@@ -71,6 +72,11 @@ class Card:
 			raise ValueError("Suit must be on of these: {}. You provided: {}"
 							 .format(list(Card.possible_suits.keys()), suit))
 		return suit
+
+	# Generate a random card
+	@staticmethod
+	def get_random():
+		return Card(random.choice(list(Card.possible_ranks.keys())), random.choice(list(Card.possible_suits.keys())))
 
 	# Method for string representation of the card
 	def __str__(self):

@@ -1,5 +1,5 @@
 """
-The file contains tests for assignment #6 project
+The file contains tests for assignment #9 project Card class
 
 Each test is commented with the test description clearly (hopefully) showing what the test does
 """
@@ -71,6 +71,13 @@ class CardTest(unittest.TestCase):
         cards = [Card(x, "s") for x in range(2, 11)]
         for card in cards:
             self.assertEqual(card.bj_value(), card.get_rank())
+
+    """
+    Test that a random card can be retrieved
+    """
+    def test_can_init_random_card(self):
+        random_card = Card.get_random()
+        assert isinstance(random_card, Card)
 
 
 if __name__ == '__main__':
