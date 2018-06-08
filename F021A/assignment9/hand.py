@@ -21,4 +21,4 @@ class Hand:
 		return reduce((lambda x, y: x.bj_value() + y.bj_value()), self.cards)
 
 	def __str__(self):
-		return reduce((lambda x, y: str(x) + str(y)), self.cards)
+		return reduce((lambda x, y: str(x) + "\n" + str(y)), self.cards)
