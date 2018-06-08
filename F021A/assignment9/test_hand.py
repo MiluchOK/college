@@ -41,7 +41,7 @@ class HandTest(unittest.TestCase):
 	"""Test that user can add a random card by calling hit_me() method"""
 
 	def test_can_add_a_random_card(self):
-		target_hand = Hand(2)
+		target_hand = Hand(10)
 		size_befor_hit = len(target_hand.cards)
 		target_hand.hit_me()
 		added_card = target_hand.cards[-1]
