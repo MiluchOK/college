@@ -2,7 +2,7 @@
 Object of class Hand represents a hand of cards and so one object stores a number of Card objects
 """
 
-from functools import reduce
+import functools
 from card import Card
 
 
@@ -14,11 +14,12 @@ class Hand:
 
 	# Add a new random card to hand
 	def hit_me(self):
-		new_card = Card.get_random
+		new_card = Card.get_random()
 		self.cards.append(new_card)
 
 	def bj_value(self):
-		return reduce((lambda x, y: x.bj_value() + y.bj_value()), self.cards)
+
+		return functools.reduce((lambda x, y: x + y.bj_value()), self.cards, 0)
 
 	def __str__(self):
-		return reduce((lambda x, y: str(x) + "\n" + str(y)), self.cards)
+		return functools.reduce((lambda x, y: x + str(y) + "\n"), self.cards, "")
