@@ -17,9 +17,21 @@ class Hand:
 		new_card = Card.get_random()
 		self.cards.append(new_card)
 
+	# Get Black jack value for the hand
 	def bj_value(self):
-
 		return functools.reduce((lambda x, y: x + y.bj_value()), self.cards, 0)
 
+	# Save the hand as a file
+	def save(self):
+		# TODO
+		raise NotImplementedError()
+
+	# Load a Hand from disk
+	@staticmethod
+	def load_from_disk():
+		# TODO
+		raise NotImplementedError()
+
+	# Get String representation of the Hand
 	def __str__(self):
 		return functools.reduce((lambda x, y: x + str(y) + "\n"), self.cards, "")
