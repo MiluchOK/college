@@ -34,8 +34,8 @@ class HandTest(unittest.TestCase):
 		target_hand = Hand(3)
 		actual_hand_str = str(target_hand)
 		expected_hand_str = "{}\n{}\n{}\n".format(str(target_hand.cards[0]),
-												str(target_hand.cards[1]),
-												str(target_hand.cards[2]))
+												  str(target_hand.cards[1]),
+												  str(target_hand.cards[2]))
 		self.assertEqual(actual_hand_str, expected_hand_str)
 
 	"""Test that user can add a random card by calling hit_me() method"""
@@ -48,6 +48,14 @@ class HandTest(unittest.TestCase):
 		self.assertEqual(len(target_hand.cards), size_befor_hit + 1)
 		self.assertIsInstance(added_card, Card)
 
+	"""Test that user can save a hand to disk and load"""
+
+	def test_can_save_to_disck_and_reload(self):
+		filename = 'test.json'
+		target_hand = Hand(10)
+		target_hand.save(filename)
+		new_hand = Hand.load_from_disk(filename)
+		self.assertEqual(target_hand, new_hand)
 
 if __name__ == '__main__':
 	unittest.main()
