@@ -11,22 +11,29 @@ class TemperatureView(Frame):
 		self.pack()
 		self.controller = controller
 
-		temperature_types = self.controller.get_possible_temp_states()
+		# Temperature conversion type selector #1
+		self.firstTemperatureState = self.buildTemperatureTypeSelector(self)
 
-		# Temperature conversion type
-		self.selected_temp_state = StringVar()
-		self.selected_temp_state.set(temperature_types[0])
-		self.temp_states = OptionMenu(self, self.selected_temp_state, *temperature_types)
-		self.temp_states.pack({"side": "left"})
-
-		# The input field
+		# User Input field
 		self.temperature_value_input = Entry(self)
 		self.temperature_value_input.pack({"side": "left"})
+
+		# Temperature conversion type selector #2
+		self.secondTemperatureState = self.buildTemperatureTypeSelector(self)
+
+		# The resulting value
+		self.convertedTemperature = Entry(self, state='disabled')
+		self.convertedTemperature.pack({"side": "left"})
 
 		# Conversion button
 		self.convertButton = Button(self)
 		self.convertButton["text"] = "Convert"
-		self.convertButton["command"] = self.controller.convertButtonPressed()
+		self.convertButton["command"] = lambda: self.controller.convertButtonPressed(
+			self.temperature_value_input.get(),
+			self.firstTemperatureState.get(),
+			self.secondTemperatureState.get(),
+			self.convertedTemperature
+		)
 		self.convertButton.pack(side=BOTTOM)
 
 		# Quit button
@@ -37,3 +44,16 @@ class TemperatureView(Frame):
 
 		# Start the view
 		self.mainloop()
+
+	def buildTemperatureTypeSelector(self, frame):
+		"""
+		Generate a selector for temperature type
+		:param frame:
+		:return:
+		"""
+		temperature_types = self.controller.get_possible_temp_states()
+		selected_temp_state = StringVar()
+		selected_temp_state.set(temperature_types[0])
+		temp_states = OptionMenu(frame, selected_temp_state, *temperature_types)
+		temp_states.pack({"side": "left"})
+		return selected_temp_state
