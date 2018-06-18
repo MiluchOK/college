@@ -1,5 +1,8 @@
-import tkinter
+"""
+The program starts up temperature conversion UI
+"""
 
+import tkinter
 import temperature_view
 import temperature_controller
 

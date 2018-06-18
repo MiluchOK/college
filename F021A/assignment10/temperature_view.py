@@ -1,9 +1,12 @@
+"""
+The program view
+"""
 from tkinter import *
 
 
 class TemperatureView(Frame):
 	"""
-	class MyFrame is the VIEW for a simple program that exemplifies the Model/View/Controller architecture. This View class is a tkinter.Frame that contains two Buttons and a Label. One Button increments a counter and the other Button quits. The Label displays the current value of the counter. Notice that the View never contains a reference to the Model, but it does contain a reference to the Controller.
+	class MyFrame is the VIEW for a simple program that exemplifies the Model/View/Controller architecture.
 	"""
 
 	def __init__(self, controller):
